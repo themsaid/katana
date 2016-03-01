@@ -2,7 +2,7 @@
 <?php
 require __DIR__.'/vendor/autoload.php';
 
-use Katana\BuildCommand;
+use Katana\Commands\BuildCommand;
 use Symfony\Component\Console\Application;
 
 $cacheDirectory = __DIR__.'/_cache';
