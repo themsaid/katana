@@ -1,18 +1,10 @@
 #!/usr/bin/env php
 <?php
+
 require __DIR__.'/vendor/autoload.php';
 
-use Katana\Commands\BuildCommand;
-use Symfony\Component\Console\Application;
-
-$cacheDirectory = __DIR__.'/_cache';
-$sourceDirectory = __DIR__.'/source';
-$siteDirectory = __DIR__.'/site';
-
-$application = new Application();
-
-$application->add(
-    new BuildCommand($cacheDirectory, $sourceDirectory, $siteDirectory)
+$katana = new \Katana\Katana(
+    new Symfony\Component\Console\Application
 );
 
-$application->run();
+$katana->handle();
