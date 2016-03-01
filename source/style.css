@@ -1,0 +1,132 @@
+html {
+    font: 62.5%/1.65 "Open Sans", sans-serif;
+    box-sizing: content-box;
+}
+
+body {
+    padding-bottom: 40px;
+    font-size: 1.3rem;
+    line-height: 22px;
+    color: #323336;
+}
+
+a {
+    color: #5193B1;
+    text-decoration: none;
+}
+
+h1 {
+    line-height: 30px;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav {
+    border-bottom: #e2edf2 1px solid;
+    padding: 10px 0;
+    z-index: 700;
+    width: 100%;
+}
+
+nav strong {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 20px;
+    left: 0;
+}
+
+nav ul {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    top: 20px;
+    margin: 0;
+    right: 0;
+}
+
+nav ul li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    float: left;
+}
+
+nav a {
+    color: #323336;
+}
+
+.welcome {
+    background: #e2edf2;
+    margin-bottom: 30px;
+    text-align: center;
+    height: 200px;
+}
+
+.welcome h1 {
+    padding-top: 75px;
+    margin: 0 0 10px;
+}
+
+.left-side {
+    width: 63.26531%;
+    float: left;
+}
+
+.right-side {
+    width: 30.61224%;
+    float: right;
+}
+
+/** SOURCE: https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ **/
+blockquote {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    border-left: 10px solid #cdd7dc;
+    background: #e8f3f8;
+    padding: 0.5em 10px;
+    margin: 1.5em 10px;
+}
+
+blockquote:before {
+    vertical-align: -0.4em;
+    margin-right: 0.25em;
+    content: open-quote;
+    line-height: 0.1em;
+    font-size: 4em;
+    color: #cdd7dc;
+}
+
+blockquote p {
+    display: inline;
+}
+
+article {
+    margin-bottom: 30px;
+}
+
+.pagination {
+    border-top: #e2edf2 1px solid;
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.m-t-30 {
+    margin-top: 30px;
+}
