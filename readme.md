@@ -1,4 +1,4 @@
-![Katana static site & blog generator](http://s23.postimg.org/vruu89cl7/katana.jpg)
+![Katana static site & blog generator](http://s14.postimg.org/a1gqg2zs1/katana.jpg)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
