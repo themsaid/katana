@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Total Downloads](https://img.shields.io/packagist/dt/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
 
-PHP static site & blog generator with markdown support. Using Laravel's [Blade](https://laravel.com/docs/5.2/blade).
+![](http://s27.postimg.org/q4sgtbalf/katana.jpg)
 
 ## Installation
 
