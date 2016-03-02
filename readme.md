@@ -24,10 +24,20 @@ Katana is shipped with sample content to help you get started immediately, and a
 
 You'll need to point your web server to this directory as the root directory of the website.
 
-## Blade templating engine
-
-Blade is a simple yet powerful templating engine built for laravel, you need to [check Blade's documentation](https://laravel.com/docs/5.2/blade) if you're not already familiar with it.
+> You'll need to run this command every time you make changes in your content files.
 
 ## Documentation
 
 The complete Katana documentation can be found here: http://themsaid.github.io/katana/
+
+## Blog generator
+
+Katana is shipped with a static blog generator, all you need to do is create a new `.blade.php` file in the `/content/_blog` directory and Katana
+will compile all the posts and present them in a view of your choice.
+
+Blog posts list is paginated based on the configuration options in `config.php`. There's also a `$blogPosts` variable available in all your blade
+views that contains an array of posts.
+
+## Blade templating engine
+
+Blade is a simple yet powerful templating engine built for laravel, you need to [check Blade's documentation](https://laravel.com/docs/5.2/blade) if you're not already familiar with it.
