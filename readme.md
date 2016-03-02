@@ -1,10 +1,8 @@
-# Katana static site & blog generator
+![](http://s27.postimg.org/q4sgtbalf/katana.jpg)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Total Downloads](https://img.shields.io/packagist/dt/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
-
-![](http://s27.postimg.org/q4sgtbalf/katana.jpg)
 
 ## Installation
 
