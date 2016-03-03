@@ -10,6 +10,12 @@ Using the power of laravel's Blade templating engine.
 
 ![Katana static site & blog generator](http://s14.postimg.org/a1gqg2zs1/katana.jpg)
 
+## Requirements
+
+- PHP 5.5.9+ or newer
+- Apache or Nginx server
+- [Composer](https://getcomposer.org)
+
 ## Installation
 
 To install a fresh Katana installation you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) & run the following command:
