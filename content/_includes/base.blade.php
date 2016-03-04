@@ -9,7 +9,6 @@
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/style.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
