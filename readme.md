@@ -32,10 +32,6 @@ php katana build
 
 Katana is shipped with sample content to help you get started immediately, and after this command runs your site will be generated in the `/public` directory.
 
-You'll need to point your web server to this directory as the root directory of the website, you'll also need to remove it for `.gitignore`.
-
-> You'll need to run this command every time you make changes in your content files.
-
 ## Documentation
 
 The complete Katana documentation can be found here: http://themsaid.github.io/katana/
