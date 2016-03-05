@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
-[![Total Downloads](https://img.shields.io/packagist/dt/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana)
+[![Total Downloads](https://img.shields.io/packagist/dt/themsaid/katana.svg?style=flat-square)](https://packagist.org/packages/themsaid/katana-core)
 
 PHP static site & blog generator with markdown support.
 
@@ -32,7 +32,7 @@ php katana build
 
 Katana is shipped with sample content to help you get started immediately, and after this command runs your site will be generated in the `/public` directory.
 
-You'll need to point your web server to this directory as the root directory of the website.
+You'll need to point your web server to this directory as the root directory of the website, you'll also need to remove it for `.gitignore`.
 
 > You'll need to run this command every time you make changes in your content files.
 
@@ -51,3 +51,8 @@ views that contains an array of posts.
 ## Blade templating engine
 
 Blade is a simple yet powerful templating engine built for laravel, you need to [check Blade's documentation](https://laravel.com/docs/5.2/blade) if you're not already familiar with it.
+
+## Using with Github Pages
+You can use Katana to publish a website over GitHub Pages using subtrees, the idea is to deploy the public directory as the master branch of your user GitHub pages repository or the gh-pages branch of your project repository.
+
+You can find the full details in [the documentation](http://themsaid.github.io/katana/).
