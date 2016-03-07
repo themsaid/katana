@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Katana - PHP static site & blog generator</title>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/libs.css">
-    <link rel="stylesheet" href="/prism.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/katana/libs.css">
+    <link rel="stylesheet" href="/katana/prism.css">
+    <link rel="stylesheet" href="/katana/style.css">
 
 </head>
 <body>
@@ -34,19 +34,19 @@
 <div class="container m-t-40">
     <div class="row">
         <div class="col-md-3">
-            <img src="/snippet_2.png" alt="">
+            <img src="/katana/snippet_2.png" alt="">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_1.png" alt="">
+            <img src="/katana/snippet_1.png" alt="">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_3.png" alt="">
+            <img src="/katana/snippet_3.png" alt="">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_4.png" alt="">
+            <img src="/katana/snippet_4.png" alt="">
         </div>
     </div>
 </div>
