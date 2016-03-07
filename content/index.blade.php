@@ -137,7 +137,7 @@
 
         #### Markdown in blade
 
-        Katana includes a `@@markdown` directive for Blade, here's how you can use it:
+        Katana includes a `@@@markdown` directive for Blade, here's how you can use it:
 
 
         ```html

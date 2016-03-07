@@ -113,112 +113,79 @@ php katana build</code></pre>
 </blockquote>
 <p>It's recommended that you <a href="https://laravel.com/docs/5.2/blade">read more about Blade</a>.</p>
 <h4>Markdown in blade</h4>
-<p>Katana includes a <code>@&lt;?php echo \Katana\Markdown::parse(&lt;&lt;&lt;'EOT'</code> directive for Blade, here's how you can use it:</p>
-<pre><code class="language-html">
-&lt;h2&gt;Regular HTML heading&lt;/h2&gt;
+<p>Katana includes a <code>@@markdown</code> directive for Blade, here's how you can use it:</p>
+<pre><code class="language-html">&lt;h2&gt;Regular HTML heading&lt;/h2&gt;
 
-@&lt;?php echo \Katana\Markdown::parse(&lt;&lt;&lt;'EOT'
+@markdown
 
 This is some **Markdown** content.
 
-@</code></pre>        ```
+@endmarkdown</code></pre>
+<p><a name="blog-generator"></a></p>
+<h1>The Blog generator</h1>
+<p>Generating a blog with Katana is insanely easy, all you have to do is to create a new file in the
+<code>/content/_blog/</code> directory with the following format for the name:</p>
+<pre><code class="language-html">2016-03-03-my-post-slug.blade.php</code></pre>
+<p>The date at the beginning of the name will help make your posts sorted by date in the filesystem, it'll also be used to generate a unique pretty URL for your post, the generated URL for the above post is:</p>
+<pre><code class="language-html">blog.com/my-post-slug-20160303</code></pre>
+<h4>Blog post variables</h4>
+<p>A blog post view may look like this:</p>
+<pre><code class="language-html">@section('post::title', 'Stop Trying To Be Somebody')
+@section('post::date', 'February 28, 2016')
 
-        <a name="blog-generator"></a>
-        # The Blog generator
+@section('post_body')
+    &lt;h2&gt;@yield('post::title')&lt;/h2&gt;
+    &lt;small&gt;@yield('post::date')&lt;/small&gt;
 
-        Generating a blog with Katana is insanely easy, all you have to do is to create a new file in the
-        `/content/_blog/` directory with the following format for the name:
+    Post content here.
+@stop</code></pre>
+<p>Section names starting with <code>post::</code> will be added to a global variable called <code>$blogPosts</code>,
+this variable will be present in all blade views and it contains an array of post objects.</p>
+<p>You can use this variable to loop over all blog posts:</p>
+<pre><code class="language-html">@foreach($blogPosts as $blogPost)
 
-        ```html
-        2016-03-03-my-post-slug.blade.php
-        ```
+    &lt;li&gt;
+        &lt;a href="{{ $blogPost-&gt;path }}"&gt;
+            {{ $blogPost-&gt;title }} at {{ $blogPost-&gt;date }}
+        &lt;/a&gt;
+    &lt;/li&gt;
 
-        The date at the beginning of the name will help make your posts sorted by date in the filesystem, it'll also be used to generate a unique pretty URL for your post, the generated URL for the above post is:
+@endforeach</code></pre>
+<p>The
+<code>path</code> attribute is automatically added by Katana, it holds the relative URL to the blog post.</p>
+<h4>Blog posts pagination</h4>
+<p>Katana generates pages to display every chunk of posts, you first need to set the
+<code>postsPerPage</code> and
+<code>postsListView</code> configuration values in
+<code>config.php</code>.</p>
+<p>Go ahead and take a look at the configuration file to know more about what every configuration does.</p>
+<p>Inside the pagination view a <code>$paginatedBlogPosts</code> variable exists containing all the posts for display in
+the current page, there's also <code>$nextPage</code> and <code>$previousPage</code> variables that hold links to the next and previous pages.</p>
+<p><a name="github-pages"></a></p>
+<h1>GitHub Pages</h1>
+<p>You can use Katana to publish a website over <a href="https://pages.github.com/">GitHub Pages</a> using subtrees, the idea is to
+deploy the public directory as the <code>master</code> branch of your user GitHub pages repository or the <code>gh-pages</code> branch of
+your project repository.</p>
+<h4>Step 1 - Add katana to a branch other than master/gh-pages:</h4>
+<p>We're going to call this branch <code>gh-pages-source</code>, install Katana on this branch and add content to your installation normally.</p>
+<h4>Step 2 - Build the website:</h4>
+<p>Once your content is ready to be published run the build command:</p>
+<pre><code class="language-bash">php katana build</code></pre>
+<p>This will generate your website files in the <code>public</code> directory.</p>
+<h4>Step 3 - Push your source files to the source branch</h4>
+<pre><code class="language-bash">git add --all
 
-        ```html
-        blog.com/my-post-slug-20160303
-        ```
+git commit -m 'publishing website'
 
-        #### Blog post variables
-
-        A blog post view may look like this:
-
-        ```html
-        @        @
-        @        ```
-
-        Section names starting with `post::` will be added to a global variable called `$blogPosts`,
-        this variable will be present in all blade views and it contains an array of post objects.
-
-        You can use this variable to loop over all blog posts:
-
-        ```html
-        @        ```
-
-        The
-        `path` attribute is automatically added by Katana, it holds the relative URL to the blog post.
-
-        #### Blog posts pagination
-
-        Katana generates pages to display every chunk of posts, you first need to set the
-        `postsPerPage` and
-        `postsListView` configuration values in
-        `config.php`.
-
-        Go ahead and take a look at the configuration file to know more about what every configuration does.
-
-        Inside the pagination view a `$paginatedBlogPosts` variable exists containing all the posts for display in
-        the current page, there's also `$nextPage` and `$previousPage` variables that hold links to the next and previous pages.
-
-        <a name="github-pages"></a>
-        # GitHub Pages
-
-        You can use Katana to publish a website over [GitHub Pages](https://pages.github.com/) using subtrees, the idea is to
-        deploy the public directory as the `master` branch of your user GitHub pages repository or the `gh-pages` branch of
-        your project repository.
-
-        #### Step 1 - Add katana to a branch other than master/gh-pages:
-
-        We're going to call this branch `gh-pages-source`, install Katana on this branch and add content to your installation normally.
-
-        #### Step 2 - Build the website:
-
-        Once your content is ready to be published run the build command:
-
-        ```bash
-        php katana build
-        ```
-
-        This will generate your website files in the `public` directory.
-
-        #### Step 3 - Push your source files to the source branch
-
-        ```bash
-        git add --all
-
-        git commit -m 'publishing website'
-
-        git push origin gh-pages-source
-        ```
-
-        #### Step 3 - Push your public directory to the master/gh-pages branch
-
-        <pre>git subtree push --prefix public origin master</pre>
-
-        OR
-
-        <pre>git subtree push --prefix public origin gh-pages</pre>
-
-        <a name="sample-content"></a>
-        # Sample Content
-
-        After installing Katana you'll find sample content for a website and a blog included, take a look at these files in
-        order for you to better understand how Katana compiles different types of files & blog posts.
-
-        
-EOT
-); ?>
-    </div>
+git push origin gh-pages-source</code></pre>
+<h4>Step 3 - Push your public directory to the master/gh-pages branch</h4>
+<pre>git subtree push --prefix public origin master</pre>
+<p>OR</p>
+<pre>git subtree push --prefix public origin gh-pages</pre>
+<p><a name="sample-content"></a></p>
+<h1>Sample Content</h1>
+<p>After installing Katana you'll find sample content for a website and a blog included, take a look at these files in
+order for you to better understand how Katana compiles different types of files &amp; blog posts.</p>    </div>
 </div>
 
 <div class="m-t-40 boom footer">
