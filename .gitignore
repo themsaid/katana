@@ -1,5 +1,4 @@
 /vendor
 /_cache
-/public
 .DS_Store
 composer.lock
