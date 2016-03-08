@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Katana - PHP static site & blog generator</title>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/katana/libs.css">
-    <link rel="stylesheet" href="/katana/prism.css">
-    <link rel="stylesheet" href="/katana/style.css">
+    <link rel="stylesheet" href="/libs.css">
+    <link rel="stylesheet" href="/prism.css">
+    <link rel="stylesheet" href="/style.css">
 
 </head>
 <body>
@@ -34,19 +34,19 @@
 <div class="container m-t-40">
     <div class="row">
         <div class="col-md-3">
-            <img src="/katana/snippet_2.png" alt="">
+            <img src="/snippet_2.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_1.png" alt="">
+            <img src="/snippet_1.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_3.png" alt="">
+            <img src="/snippet_3.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_4.png" alt="">
+            <img src="/snippet_4.png">
         </div>
     </div>
 </div>
@@ -86,6 +86,10 @@ by running the following commands:</p>
 
 php katana build</code></pre>
 <p>The website files will be generated in the <code>public</code> directory.</p>
+<h4>Defining the base URL for the build</h4>
+<p>You can define the base URL of your website for the current build by providing a <code>base_url</code> console option:</p>
+<pre><code class="language-bash">php katana build --base_url=/awesome-site</code></pre>
+<p>Doing this will generate URLs like <code>/awesome-site/about</code> when using the <code>@url()</code> blade directive.</p>
 <p><a name="directory-structure"></a></p>
 <h1>Directory structure</h1>
 <p>After running the build command the structure will contain the following files:</p>
@@ -117,10 +121,15 @@ php katana build</code></pre>
 <pre><code class="language-html">&lt;h2&gt;Regular HTML heading&lt;/h2&gt;
 
 @markdown
-
-This is some **Markdown** content.
-
+    This is some **Markdown** content.
 @endmarkdown</code></pre>
+<h4>Generating URLs</h4>
+<p>Katana also includes a <code>@url()</code> directive to generate URLs for pages and assets based on the site's <code>base_url</code>:</p>
+<pre><code class="language-html">@('/')                // Outputs '/'
+
+@('about')            // Outputs '/about'
+
+@('assets/style.js')  // Outputs '/assets/style.js'</code></pre>
 <p><a name="blog-generator"></a></p>
 <h1>The Blog generator</h1>
 <p>Generating a blog with Katana is insanely easy, all you have to do is to create a new file in the
@@ -143,13 +152,11 @@ This is some **Markdown** content.
 this variable will be present in all blade views and it contains an array of post objects.</p>
 <p>You can use this variable to loop over all blog posts:</p>
 <pre><code class="language-html">@foreach($blogPosts as $blogPost)
-
     &lt;li&gt;
         &lt;a href="{{ $blogPost-&gt;path }}"&gt;
             {{ $blogPost-&gt;title }} at {{ $blogPost-&gt;date }}
         &lt;/a&gt;
     &lt;/li&gt;
-
 @endforeach</code></pre>
 <p>The
 <code>path</code> attribute is automatically added by Katana, it holds the relative URL to the blog post.</p>
@@ -171,7 +178,8 @@ your project repository.</p>
 <h4>Step 2 - Build the website:</h4>
 <p>Once your content is ready to be published run the build command:</p>
 <pre><code class="language-bash">php katana build</code></pre>
-<p>This will generate your website files in the <code>public</code> directory.</p>
+<p>If you're going to publish the website on a GitHub page for a project rather than a user you'll need to define a <code>base_url</code>.</p>
+<pre><code class="language-bash">php katana build --base_url=project-repo-name</code></pre>
 <h4>Step 3 - Push your source files to the source branch</h4>
 <pre><code class="language-bash">git add --all
 
@@ -179,9 +187,10 @@ git commit -m 'publishing website'
 
 git push origin gh-pages-source</code></pre>
 <h4>Step 3 - Push your public directory to the master/gh-pages branch</h4>
-<pre>git subtree push --prefix public origin master</pre>
+<p>You need to make sure the <code>public</code> directory is removed from <code>.gitignore</code> first.</p>
+<pre><code class="language-bash">git subtree push --prefix public origin master</code></pre>
 <p>OR</p>
-<pre>git subtree push --prefix public origin gh-pages</pre>
+<pre><code class="language-bash">git subtree push --prefix public origin gh-pages</code></pre>
 <p><a name="sample-content"></a></p>
 <h1>Sample Content</h1>
 <p>After installing Katana you'll find sample content for a website and a blog included, take a look at these files in

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Katana - PHP static site & blog generator</title>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/katana/libs.css">
-    <link rel="stylesheet" href="/katana/prism.css">
-    <link rel="stylesheet" href="/katana/style.css">
+    <link rel="stylesheet" href="@url('libs.css')">
+    <link rel="stylesheet" href="@url('prism.css')">
+    <link rel="stylesheet" href="@url('style.css')">
 
 </head>
 <body>
@@ -34,19 +34,19 @@
 <div class="container m-t-40">
     <div class="row">
         <div class="col-md-3">
-            <img src="/katana/snippet_2.png" alt="">
+            <img src="@url('snippet_2.png')">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_1.png" alt="">
+            <img src="@url('snippet_1.png')">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_3.png" alt="">
+            <img src="@url('snippet_3.png')">
         </div>
 
         <div class="col-md-3">
-            <img src="/katana/snippet_4.png" alt="">
+            <img src="@url('snippet_4.png')">
         </div>
     </div>
 </div>
@@ -98,6 +98,16 @@
 
         The website files will be generated in the `public` directory.
 
+        #### Defining the base URL for the build
+
+        You can define the base URL of your website for the current build by providing a `base_url` console option:
+
+        ```bash
+        php katana build --base_url=/awesome-site
+        ```
+
+        Doing this will generate URLs like `/awesome-site/about` when using the `@@url()` blade directive.
+
         <a name="directory-structure"></a>
         # Directory structure
 
@@ -139,15 +149,24 @@
 
         Katana includes a `@@markdown` directive for Blade, here's how you can use it:
 
-
         ```html
         <h2>Regular HTML heading</h2>
 
         @@markdown
-
-        This is some **Markdown** content.
-
+            This is some **Markdown** content.
         @@endmarkdown
+        ```
+
+        #### Generating URLs
+
+        Katana also includes a `@@url()` directive to generate URLs for pages and assets based on the site's `base_url`:
+
+        ```html
+        @('/')                // Outputs '/'
+
+        @('about')            // Outputs '/about'
+
+        @('assets/style.js')  // Outputs '/assets/style.js'
         ```
 
         <a name="blog-generator"></a>
@@ -189,13 +208,11 @@
 
         ```html
         @@foreach($blogPosts as $blogPost)
-
             <li>
                 <a href="@{{ $blogPost->path }}">
                     @{{ $blogPost->title }} at @{{ $blogPost->date }}
                 </a>
             </li>
-
         @@endforeach
         ```
 
@@ -233,7 +250,11 @@
         php katana build
         ```
 
-        This will generate your website files in the `public` directory.
+        If you're going to publish the website on a GitHub page for a project rather than a user you'll need to define a `base_url`.
+
+        ```bash
+        php katana build --base_url=project-repo-name
+        ```
 
         #### Step 3 - Push your source files to the source branch
 
@@ -247,11 +268,17 @@
 
         #### Step 3 - Push your public directory to the master/gh-pages branch
 
-        <pre>git subtree push --prefix public origin master</pre>
+        You need to make sure the `public` directory is removed from `.gitignore` first.
+
+        ```bash
+        git subtree push --prefix public origin master
+        ```
 
         OR
 
-        <pre>git subtree push --prefix public origin gh-pages</pre>
+        ```bash
+        git subtree push --prefix public origin gh-pages
+        ```
 
         <a name="sample-content"></a>
         # Sample Content
