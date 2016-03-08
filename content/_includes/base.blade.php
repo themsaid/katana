@@ -20,7 +20,7 @@
 
         <ul>
             <li><a href="@url('/')">Home</a></li>
-            <li><a href="@url('/blog')">Blog</a></li>
+            <li><a href="@url('blog')">Blog</a></li>
             <li><a href="@url('about')">About</a></li>
             <li><a href="https://github.com/themsaid/katana">Github</a></li>
             <li><a href="https://themsaid.github.io/katana">Docs</a></li>

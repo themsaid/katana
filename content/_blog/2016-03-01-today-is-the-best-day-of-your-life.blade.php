@@ -1,15 +1,13 @@
 @extends('_includes.blog_post_base')
 
-@section('post::title', 'Stop Trying To Be Somebody')
-@section('post::date', 'February 28, 2016')
-@section('post::brief', 'They’re waiting for someone to make them into Singers. With the lifestyle, and the glamour to boot. They don’t want to do something. They want to be the person who does something.')
+@section('post::title', 'Today Is The Best Day Of Your Life')
+@section('post::date', 'March 01, 2016')
+@section('post::brief', 'When you watch reality TV singing shows, the hopefuls tend to be starry eyed dreamers, who’ll look into the camera and say “I’ve always dreamed about being a singer.” They never say they’ve always dreamed of singing.')
 @section('pageTitle')- @yield('post::title')@stop
 
 @section('post_body')
 
     @markdown
-    ![Look up](https://cdn-images-1.medium.com/max/2000/1*_9SDjff_XSe6Kl_LSJrsKg.jpeg)
-
     The easiest way to accomplish visual balance is to align elements and structure designs with a clear grid. It guides us in the right direction when placing elements and determine dimensions, and it makes it easier for the user to process the interface.
 
     > Design for change
