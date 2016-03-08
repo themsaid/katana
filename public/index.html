@@ -181,13 +181,14 @@ your project repository.</p>
 <p>If you're going to publish the website on a GitHub page for a project rather than a user you'll need to define a <code>base_url</code>.</p>
 <pre><code class="language-bash">php katana build --base_url=project-repo-name</code></pre>
 <h4>Step 3 - Push your source files to the source branch</h4>
+<p>First you need to make sure the <code>public</code> directory is removed from <code>.gitignore</code> first, once it's commit-able you may run
+these commands:</p>
 <pre><code class="language-bash">git add --all
 
 git commit -m 'publishing website'
 
 git push origin gh-pages-source</code></pre>
 <h4>Step 3 - Push your public directory to the master/gh-pages branch</h4>
-<p>You need to make sure the <code>public</code> directory is removed from <code>.gitignore</code> first.</p>
 <pre><code class="language-bash">git subtree push --prefix public origin master</code></pre>
 <p>OR</p>
 <pre><code class="language-bash">git subtree push --prefix public origin gh-pages</code></pre>

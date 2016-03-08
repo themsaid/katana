@@ -258,6 +258,9 @@
 
         #### Step 3 - Push your source files to the source branch
 
+        First you need to make sure the `public` directory is removed from `.gitignore` first, once it's commit-able you may run
+        these commands:
+
         ```bash
         git add --all
 
@@ -267,8 +270,6 @@
         ```
 
         #### Step 3 - Push your public directory to the master/gh-pages branch
-
-        You need to make sure the `public` directory is removed from `.gitignore` first.
 
         ```bash
         git subtree push --prefix public origin master
