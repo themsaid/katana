@@ -10,7 +10,7 @@
 
                 <article>
                     <p>
-                        <a href="{{ $post->path }}">{{ $post->title }}</a>
+                        <a href="@url($post->path)">{{ $post->title }}</a>
                         <br>
                         <small>{{ $post->date }}</small>
                         <br>

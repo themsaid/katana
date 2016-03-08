@@ -4,7 +4,7 @@
 
     <div class="wrapper m-t-30">
         <div class="left-side">
-            <a href="/blog">Back to blog</a>
+            <a href="@url('blog')">Back to blog</a>
 
             <h1>@yield('post::title')</h1>
 
