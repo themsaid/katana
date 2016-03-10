@@ -48,7 +48,11 @@ views that contains an array of posts.
 
 Blade is a simple yet powerful templating engine built for laravel, you need to [check Blade's documentation](https://laravel.com/docs/5.2/blade) if you're not already familiar with it.
 
-## Using with Github Pages
+## Using with GitHub Pages
 You can use Katana to publish a website over GitHub Pages using subtrees, the idea is to deploy the public directory as the master branch of your user GitHub pages repository or the gh-pages branch of your project repository.
 
 You can find the full details in [the documentation](http://themsaid.github.io/katana/).
+
+## Contribution
+
+Contributions are welcomed in this repository https://github.com/themsaid/katana-core where all source files exist.
