@@ -1,6 +1,6 @@
 ---
-extends: _includes.base
-sectionName: body
+view::extends: _includes.base
+view::yields: body
 pageTitle: - Some Markdown
 ---
 

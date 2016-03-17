@@ -1,8 +1,8 @@
 ---
-extends: _includes.blog_post_base
-sectionName: post_body
-post::title: Give Your Ideas Away
+view::extends: _includes.blog_post_base
+view::yields: post_body
 pageTitle: Give Your Ideas Away
+post::title: Give Your Ideas Away
 post::date: March 17, 2016
 post::brief: There is nothing of tangible value there yet. Could one of my contacts steal the idea? Absolutely. Could they execute it? Who knows.
 ---
