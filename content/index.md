@@ -1,6 +1,6 @@
 ---
-extends: _includes.index_base
-sectionName: body
+view::extends: _includes.index_base
+view::yields: body
 ---
 
 <div class="toc">
