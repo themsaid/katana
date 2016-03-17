@@ -66,17 +66,18 @@
 
 <div class="container docs m-t-40">
     <div class="col-md-8 col-md-offset-2 docs-content">
-        <div class="toc">
-            <ul>
+        
+            <div class="toc">
+    <ul>
 <li><a href="#installation">-&gt; Installation</a></li>
 <li><a href="#directory-structure">-&gt; Directory Structure</a></li>
 <li><a href="#blade-templates">-&gt; Blade Templates</a></li>
+<li><a href="#markdown-files">-&gt; Using Markdown files</a></li>
 <li><a href="#blog-generator">-&gt; Blog Generator</a></li>
 <li><a href="#github-pages">-&gt; GitHub Pages</a></li>
 <li><a href="#sample-content">-&gt; Sample Content</a></li>
-</ul>        </div>
-
-        <p><a name="installation"></a></p>
+</ul></div>
+<p><a name="installation"></a></p>
 <h1>Installation</h1>
 <p>Installing Katana is fairly easy, first you need to run the composer create-project command:</p>
 <pre><code class="language-bash">composer create-project themsaid/katana your-site-name</code></pre>
@@ -86,10 +87,10 @@ by running the following commands:</p>
 
 php katana build</code></pre>
 <p>The website files will be generated in the <code>public</code> directory.</p>
-<h4>Defining the base URL for the build</h4>
-<p>You can define the base URL of your website for the current build by providing a <code>base_url</code> console option:</p>
-<pre><code class="language-bash">php katana build --base_url=/awesome-site</code></pre>
-<p>Doing this will generate URLs like <code>/awesome-site/about</code> when using the <code>@url()</code> blade directive.</p>
+<h4>Defining your environment</h4>
+<p>You can optionally define the environment you'd like to build the website for using the <code>env</code> console option:</p>
+<pre><code class="language-bash">php katana build --env=production</code></pre>
+<p>Doing so will make katana look for a <code>config-production.php</code> file, you can overwrite any default option in this file.</p>
 <p><a name="directory-structure"></a></p>
 <h1>Directory structure</h1>
 <p>After running the build command the structure will contain the following files:</p>
@@ -124,12 +125,27 @@ php katana build</code></pre>
     This is some **Markdown** content.
 @endmarkdown</code></pre>
 <h4>Generating URLs</h4>
-<p>Katana also includes a <code>@url()</code> directive to generate URLs for pages and assets based on the site's <code>base_url</code>:</p>
+<p>Katana also includes a <code>@url()</code> directive to generate URLs for pages and assets based on the site's <code>base_url</code> configuration:</p>
 <pre><code class="language-html">@('/')                // Outputs '/'
 
 @('about')            // Outputs '/about'
 
 @('assets/style.js')  // Outputs '/assets/style.js'</code></pre>
+<p><a name="markdown-files"></a></p>
+<h1>Using Markdown files</h1>
+<p>You may also use a <code>.md</code> file to render your website/blog pages, all you need to do is to replace the <code>.blade.php</code> extension with a <code>.md</code> extension and adjust your files like so:</p>
+<pre><code class="language-markup">---
+extends: _includes.base
+sectionName: body
+---
+
+This is a pure markdown document, but you still may use {{ $anyBladeSyntax }}.
+
+&lt;div class="alert alert-info"&gt;
+@markdown
+This will allow you to have **markdown** parsed even inside HTML blocks.
+@endmarkdown
+&lt;/div&gt;</code></pre>
 <p><a name="blog-generator"></a></p>
 <h1>The Blog generator</h1>
 <p>Generating a blog with Katana is insanely easy, all you have to do is to create a new file in the
@@ -148,8 +164,7 @@ php katana build</code></pre>
 
     Post content here.
 @stop</code></pre>
-<p>Section names starting with <code>post::</code> will be added to a global variable called <code>$blogPosts</code>,
-this variable will be present in all blade views and it contains an array of post objects.</p>
+<p>Section names starting with <code>post::</code> will be added to a global variable called <code>$blogPosts</code>, this variable will be present in all blade views and it contains an array of post objects.</p>
 <p>You can use this variable to loop over all blog posts:</p>
 <pre><code class="language-html">@foreach($blogPosts as $blogPost)
     &lt;li&gt;
@@ -158,12 +173,18 @@ this variable will be present in all blade views and it contains an array of pos
         &lt;/a&gt;
     &lt;/li&gt;
 @endforeach</code></pre>
+<h3>Markdown blog posts</h3>
+<p>You may have your posts in a pure markdown file as well:</p>
+<pre><code class="language-html">---
+extends: _includes.blog_base
+sectionName: post_body
+post::title: Stop Trying To Be Somebody
+---
+**Markdown** post content here.</code></pre>
 <p>The
 <code>path</code> attribute is automatically added by Katana, it holds the relative URL to the blog post.</p>
 <h4>Blog posts pagination</h4>
-<p>Katana generates pages to display every chunk of posts, you first need to set the
-<code>postsPerPage</code> and
-<code>postsListView</code> configuration values in
+<p>Katana generates pages to display every chunk of posts, you first need to set the <code>postsPerPage</code> and <code>postsListView</code> configuration values in
 <code>config.php</code>.</p>
 <p>Go ahead and take a look at the configuration file to know more about what every configuration does.</p>
 <p>Inside the pagination view a <code>$paginatedBlogPosts</code> variable exists containing all the posts for display in
@@ -195,7 +216,9 @@ git push origin gh-pages-source</code></pre>
 <p><a name="sample-content"></a></p>
 <h1>Sample Content</h1>
 <p>After installing Katana you'll find sample content for a website and a blog included, take a look at these files in
-order for you to better understand how Katana compiles different types of files &amp; blog posts.</p>    </div>
+order for you to better understand how Katana compiles different types of files &amp; blog posts.</p>
+
+                </div>
 </div>
 
 <div class="m-t-40 boom footer">

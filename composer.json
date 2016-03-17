@@ -12,6 +12,6 @@
   "require": {
     "php": ">=5.5.9",
     "illuminate/view": "5.2.*@dev",
-    "themsaid/katana-core": "0.2.*"
+    "themsaid/katana-core": "@dev"
   }
 }
