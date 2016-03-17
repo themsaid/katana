@@ -6,7 +6,7 @@ return [
      * Site base URL
      * --------------------------------------------------------------------------
      *
-     * This base URL will be used to generate links inside the @url blade
+     * This base URL will be used to generate links for the @url blade
      * directive, it should always start with a forward slash.
      *
      */
@@ -18,10 +18,11 @@ return [
      * Enabling the blog generator
      * --------------------------------------------------------------------------
      *
-     * When the blog generator is enabled, blade views in "source/_blog"
-     * will be parsed to get blog posts data and generate blog
-     * pagination views. Disable this option if you won't
-     * have a blog to get a performance boost.
+     * When the blog generator is enabled, blade views in "content/_blog" will
+     * be parsed to get blog posts data and generate blog pagination views.
+     *
+     * Disable this option if you don't need  a blog for your website to
+     * get a performance boost.
      *
      */
 
