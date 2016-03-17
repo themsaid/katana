@@ -28,7 +28,9 @@
     </div>
 </nav>
 
-@yield('body')
+<div class="wrapper m-t-30">
+    @yield('body')
+</div>
 
 <div class="clearfix"></div>
 
