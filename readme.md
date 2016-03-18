@@ -10,6 +10,8 @@ Using the power of laravel's Blade templating engine.
 
 ![Katana static site & blog generator](http://s14.postimg.org/a1gqg2zs1/katana.jpg)
 
+> Katana was inspired by [Jigsaw](https://github.com/tightenco/jigsaw).
+
 ## Requirements
 
 - PHP 5.5.9+ or newer
