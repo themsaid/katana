@@ -10,7 +10,7 @@ Using the power of laravel's Blade templating engine.
 
 ![Katana static site & blog generator](http://s14.postimg.org/a1gqg2zs1/katana.jpg)
 
-> Katana was inspired by [Jigsaw](https://github.com/tightenco/jigsaw).
+> Katana was inspired by [Jigsaw](https://github.com/tightenco/jigsaw) by [Adam Wathan](http://adamwathan.me/) and the folks at [Tighten](http://tighten.co/).
 
 ## Requirements
 
