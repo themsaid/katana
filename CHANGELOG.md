@@ -1,3 +1,10 @@
+# v1.1.0
+
+> 2016-03-23
+
+1. Included a `$currentViewPath` variable available in all views that holds the path from the file system to the current view being rendered.
+1. Included a `$currentUrlPath` as well that hold the current URL path.
+
 # v1.0.0
 
 > 2016-03-17
