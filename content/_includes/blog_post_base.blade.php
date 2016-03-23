@@ -1,5 +1,7 @@
 @extends('_includes.base')
 
+@section('pageDescription')@yield('post::brief')@endsection
+
 @section('body')
 
     <div class="wrapper m-t-30">
