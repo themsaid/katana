@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Katana - PHP static site & blog generator</title>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/libs.css">
-    <link rel="stylesheet" href="/prism.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/katana/libs.css">
+    <link rel="stylesheet" href="/katana/prism.css">
+    <link rel="stylesheet" href="/katana/style.css">
 
 </head>
 <body>
@@ -34,19 +34,19 @@
 <div class="container m-t-40">
     <div class="row">
         <div class="col-md-3">
-            <img src="/snippet_2.png">
+            <img src="/katana/snippet_2.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_1.png">
+            <img src="/katana/snippet_1.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_3.png">
+            <img src="/katana/snippet_3.png">
         </div>
 
         <div class="col-md-3">
-            <img src="/snippet_4.png">
+            <img src="/katana/snippet_4.png">
         </div>
     </div>
 </div>
@@ -130,12 +130,18 @@ php katana build</code></pre>
 @('about')            // Outputs '/about'
 
 @('assets/style.js')  // Outputs '/assets/style.js'</code></pre>
+<h4>View variables</h4>
+<p>Inside each view you may call any of the variables defined in <code>config.php</code>, there are also some variables assigned automatically by Katana:</p>
+<ul>
+<li><code>$currentViewPath</code> -&gt; holds the path from the filesystem to the current view being rendered.</li>
+<li><code>$currentUrlPath</code> -&gt; holds the current URL path.</li>
+</ul>
 <p><a name="markdown-files"></a></p>
 <h1>Using Markdown files</h1>
 <p>You may also use a <code>.md</code> file to render your website/blog pages, all you need to do is to replace the <code>.blade.php</code> extension with a <code>.md</code> extension and adjust your files like so:</p>
 <pre><code class="language-markup">---
-extends: _includes.base
-sectionName: body
+view::extends: _includes.base
+view::yields: body
 ---
 
 This is a pure markdown document, but you still may use {{ $anyBladeSyntax }}.
@@ -145,6 +151,7 @@ This is a pure markdown document, but you still may use {{ $anyBladeSyntax }}.
 This will allow you to have **markdown** parsed even inside HTML blocks.
 @endmarkdown
 &lt;/div&gt;</code></pre>
+<p>Although the file extension is <code>.md</code> but you may still use all blade directives.</p>
 <p><a name="blog-generator"></a></p>
 <h1>The Blog generator</h1>
 <p>Generating a blog with Katana is insanely easy, all you have to do is to create a new file in the
@@ -172,16 +179,15 @@ This will allow you to have **markdown** parsed even inside HTML blocks.
         &lt;/a&gt;
     &lt;/li&gt;
 @endforeach</code></pre>
+<p>The <code>path</code> attribute is automatically added by Katana, it holds the relative URL to the blog post.</p>
 <h3>Markdown blog posts</h3>
 <p>You may have your posts in a pure markdown file as well:</p>
 <pre><code class="language-html">---
-extends: _includes.blog_base
-sectionName: post_body
+view::extends: _includes.blog_base
+view::yields: post_body
 post::title: Stop Trying To Be Somebody
 ---
 **Markdown** post content here.</code></pre>
-<p>The
-<code>path</code> attribute is automatically added by Katana, it holds the relative URL to the blog post.</p>
 <h4>Blog posts pagination</h4>
 <p>Katana generates pages to display every chunk of posts, you first need to set the <code>postsPerPage</code> and <code>postsListView</code> configuration values in
 <code>config.php</code>.</p>

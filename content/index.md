@@ -107,14 +107,21 @@ Katana also includes a `@@url()` directive to generate URLs for pages and assets
 @('assets/style.js')  // Outputs '/assets/style.js'
 ```
 
+#### View variables
+
+Inside each view you may call any of the variables defined in `config.php`, there are also some variables assigned automatically by Katana:
+
+- `$currentViewPath` -> holds the path from the filesystem to the current view being rendered.
+- `$currentUrlPath` -> holds the current URL path.
+
 <a name="markdown-files"></a>
 # Using Markdown files
 You may also use a `.md` file to render your website/blog pages, all you need to do is to replace the `.blade.php` extension with a `.md` extension and adjust your files like so:
 
 ```markup
 ---
-extends: _includes.base
-sectionName: body
+view::extends: _includes.base
+view::yields: body
 ---
 
 This is a pure markdown document, but you still may use @{{ $anyBladeSyntax }}.
@@ -126,6 +133,7 @@ This will allow you to have **markdown** parsed even inside HTML blocks.
 </div>
 ```
 
+Although the file extension is `.md` but you may still use all blade directives.
 
 <a name="blog-generator"></a>
 # The Blog generator
@@ -173,20 +181,19 @@ You can use this variable to loop over all blog posts:
 @@endforeach
 ```
 
+The `path` attribute is automatically added by Katana, it holds the relative URL to the blog post.
+
 ### Markdown blog posts
 You may have your posts in a pure markdown file as well:
 
 ```html
 ---
-extends: _includes.blog_base
-sectionName: post_body
+view::extends: _includes.blog_base
+view::yields: post_body
 post::title: Stop Trying To Be Somebody
 ---
 **Markdown** post content here.
 ```
-
-The
-`path` attribute is automatically added by Katana, it holds the relative URL to the blog post.
 
 #### Blog posts pagination
 
