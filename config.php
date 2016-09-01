@@ -21,7 +21,7 @@ return [
      * When the blog generator is enabled, blade views in "content/_blog" will
      * be parsed to get blog posts data and generate blog pagination views.
      *
-     * Disable this option if you don't need  a blog for your website to
+     * Disable this option if you don't need a blog for your website to
      * get a performance boost.
      *
      */
