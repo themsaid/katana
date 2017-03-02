@@ -9,7 +9,7 @@
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="@url('assets/css/all.css')">
+    <link rel="stylesheet" href="@url('assets/css/app.css')">
 </head>
 
 <body>
@@ -33,6 +33,6 @@
 </div>
 
 <div class="clearfix"></div>
-
+<script src="@url('assets/js/app.js')"></script>
 </body>
 </html>
